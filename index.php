@@ -225,7 +225,6 @@ include('components/journey-items.php');
                 class="btn btn-light btn-lg text-dark">View All Articles</a></div>
     </div>
 
-
     <div class="OURJOURNEY">
         <div class="title white">
             <span>Our Journey</span>
@@ -256,6 +255,17 @@ include('components/journey-items.php');
     <div class="pattern">
         <object data="assets/img/Transition.svg" alt="pattern-contact" class="objectdata"></object>
     </div>
+
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-body p-0">
+                    <img src="" id="galleryModalImage" class="w-100" alt="Gallery Preview">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="gallery min-vh-100">
         <div class="title" style="padding-top: 0;">
             <span>Gallery</span>
@@ -378,6 +388,18 @@ include('components/journey-items.php');
     VanillaTilt.init(document.querySelectorAll(".upcomingeventrow"));
     </script>
     <script src="assets/js/RSShandle.js"></script>
+
+    <script>
+        document.querySelectorAll('.gallery-item').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                const modalImage = document.getElementById('galleryModalImage');
+                modalImage.src = this.src;
+                const modal = new bootstrap.Modal(document.getElementById('galleryModal'));
+                modal.show();
+            });
+        });
+    </script>
 </body>
 
 </html>
